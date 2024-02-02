@@ -1,19 +1,20 @@
 import React from 'react';
 
-import { Card, CardMedia } from '@material-ui/core';
+import { Card, CardContent, Typography } from '@mui/material';
 
-export default function ShiftCard() { 
+const CustomCard = (props) => {
   return (
-    <card>
-      <CardMedia 
-        component= "img" 
-        image="https://via.placeholder.com/1000x200"
-        heigth= "200"
-        alt="Shift system"
-      />
-    </card>
-    // <div className={`card ${props.className}`} style={props.style}>
-    //   {props.children}
-    // </div>
+    <Card>
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {props.title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {props.description}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
+
+export default CustomCard;

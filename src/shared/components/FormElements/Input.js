@@ -3,6 +3,8 @@ import React, { useReducer, useEffect } from 'react';
 import { validate } from '../../util/validators';
 import './Input.css';
 
+import Input from '@mui/joy/Input';
+
 const inputReducer = (state, action) => {
   switch (action.type) {
     case 'CHANGE':
@@ -22,7 +24,7 @@ const inputReducer = (state, action) => {
   }
 };
 
-const Input = props => {
+const Inputs = props => {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: props.initialValue || '',
     isTouched: false,
@@ -50,25 +52,14 @@ const Input = props => {
     });
   };
 
-  const element =
-    props.element === 'input' ? (
-      <input
-        id={props.id}
-        type={props.type}
-        placeholder={props.place}
-        onChange={changeHandler}
-        onBlur={touchHandler}
-        value={inputState.value}
-      />
-    ) : (
-      <textarea
-        id={props.id}
-        rows={props.rows || 3}
-        onChange={changeHandler}
-        onBlur={touchHandler}
-        value={inputState.value}
-      />
-    );
+  const element = (
+    <Input
+      placeholder={props.place}
+      onChange={changeHandler}
+      onBlur={touchHandler}
+      value={inputState.value}
+    />
+  );
 
   return (
     <div
@@ -83,4 +74,9 @@ const Input = props => {
   );
 };
 
-export default Input;
+export default Inputs;
+
+
+// export default function BasicInput() {
+//   return <Input placeholder="Type in here…" />;
+// }
